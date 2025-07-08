@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Island Sweeper - A Cozy Cleaning Adventure</title>
+
+  <!-- Google Fonts: Nunito (friendly, rounded sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ------------------- */
+    /* --- CSS Reset & Globals --- */
+    /* ------------------- */
+    :root {
+      --color-bg: #F0F8FF; /* AliceBlue - soft, sky-like */
+      --color-text: #334155; /* Slate 700 - dark, but not black */
+      --color-primary: #60A5FA; /* Blue 400 - friendly and inviting */
+      --color-primary-dark: #3B82F6; /* Blue 500 - for hover */
+      --color-secondary: #FDE68A; /* Amber 200 - sunny yellow */
+      --color-white: #FFFFFF;
+      --color-border: #E0E7FF; /* Indigo 100 - soft border */
+
+      --font-family: 'Nunito', sans-serif;
+      --container-width: 1100px;
+      --section-padding: 5rem 1rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 2.25rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: var(--container-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* ------------------- */
+    /* --- BEM Components --- */
+    /* ------------------- */
+
+    /* --- Hero Section --- */
+    .hero {
+      padding: var(--section-padding);
+      text-align: center;
+      background-color: var(--color-secondary);
+      background-image: linear-gradient(180deg, rgba(253, 230, 138, 0.8) 0%, rgba(240, 248, 255, 1) 100%);
+    }
+
+    .hero__headline {
+      color: var(--color-text);
+      margin-bottom: 1rem;
+    }
+
+    .hero__sub-headline {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .hero__image-wrapper {
+      max-width: 800px;
+      margin: 3rem auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero__cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero__button {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .hero__button:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero__button--primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .hero__button--primary:hover {
+      background-color: var(--color-primary-dark);
+    }
+
+    .hero__button--secondary {
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      border: 2px solid var(--color-border);
+    }
+
+    .hero__button--secondary:hover {
+      background-color: #F9FAFB; /* Gray 50 */
+    }
+
+    /* --- About Section --- */
+    .about {
+      padding: var(--section-padding);
+      background-color: var(--color-white);
+    }
+
+    .about__content {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .about__text {
+      flex: 1;
+    }
+
+    .about__title {
+      margin-bottom: 1.5rem;
+    }
+
+    .about__image-wrapper {
+      flex: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    /* --- Community Section --- */
+    .community {
+      padding: var(--section-padding);
+    }
+
+    .community__title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .community__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .community-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .community-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .community-card__icon {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 1rem auto;
+      color: var(--color-primary);
+    }
+
+    .community-card__title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .community-card__description {
+      margin-bottom: 1.5rem;
+    }
+
+    .community-card__link {
+      display: inline-block;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 0.6rem 1.5rem;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: background-color 0.2s ease;
+    }
+
+    .community-card__link:hover {
+      background-color: var(--color-primary-dark);
+    }
+
+    /* --- Updates Section --- */
+    .updates {
+      padding: var(--section-padding);
+      background-color: var(--color-white);
+    }
+
+    .updates__title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .updates__log {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #F9FAFB; /* Gray 50 */
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+
+    .updates__version {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--color-primary);
+    }
+
+    .updates__list {
+      list-style-type: '🧹'; /* Fun little emoji bullet */
+      padding-left: 2rem;
+    }
+
+    .updates__list li {
+      padding-left: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* --- Footer Section --- */
+    .footer {
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    .footer__links {
+      margin-bottom: 1rem;
+    }
+
+    .footer__link {
+      color: var(--color-primary);
+      text-decoration: none;
+      margin: 0 0.75rem;
+      font-weight: 700;
+    }
+
+    .footer__link:hover {
+      text-decoration: underline;
+    }
+
+    .footer__copyright {
+      font-size: 0.9rem;
+      color: #64748B; /* Slate 500 */
+    }
+
+    /* ------------------- */
+    /* --- Responsive Media Queries --- */
+    /* ------------------- */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      :root {
+        --section-padding: 3rem 1rem;
+      }
+
+      .about__content {
+        flex-direction: column;
+        gap: 3rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Section 1: Hero -->
+<header class="hero">
+  <div class="container">
+    <h1 class="hero__headline">Cozy Cleaning on Sunny Shores</h1>
+    <p class="hero__sub-headline">A relaxing, low-poly adventure about making islands sparkle, one street at a time.</p>
+
+    <div class="hero__cta-group">
+      <a href="https://discord.com/channels/1392164113177907231/1392164114683527170"
+         class="hero__button hero__button--primary" target="_blank" rel="noopener noreferrer">Join our Discord</a>
+      <a href="https://turtaru.itch.io/sweeps" class="hero__button hero__button--secondary" target="_blank"
+         rel="noopener noreferrer">Play on itch.io</a>
+    </div>
+
+    <div class="hero__image-wrapper">
+      <!--
+          REPLACE THIS IMAGE:
+          This is your primary hero screenshot.
+          Recommended size: 1600x900px
+      -->
+      <img src="https://placehold.co/1600x900/A8D8B9/334155?text=Your+Beautiful\nGame+Screenshot"
+           alt="A colorful, low-poly island with a street sweeper vehicle.">
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Section 2: About the Game -->
+  <section class="about">
+    <div class="container about__content">
+      <div class="about__text">
+        <h2 class="about__title">The Simple Joy of a Clean Sweep</h2>
+        <p>
+          Welcome to Island Sweeper! This is a game about the simple, satisfying joy of cleaning. Hop into your trusty
+          sweeper vehicle and explore charming, low-poly islands at your own pace. There are no timers, no enemies, and
+          no stress—just you, your sweeper, and a world waiting to sparkle.
+        </p>
+        <p>
+          This is an early developer build, and your feedback is crucial to our journey. We're focused on creating a
+          truly relaxing and satisfying experience, and we can't wait for you to be a part of it.
+        </p>
+      </div>
+      <div class="about__image-wrapper">
+        <!--
+            REPLACE THIS IMAGE:
+            A good place for a "before/after" or alternate environment shot.
+            Recommended size: 1200x800px
+        -->
+        <img src="https://placehold.co/1200x800/FDE68A/334155?text=Another+Great\nScreenshot+Here"
+             alt="A street sweeper cleaning a path on a different island.">
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Call to Action / Community Hub -->
+  <section class="community">
+    <div class="container">
+      <h2 class="community__title">Become an Early Sweeper!</h2>
+      <div class="community__grid">
+
+        <!-- Discord Card -->
+        <div class="community-card">
+          <svg class="community-card__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.317 4.36981C18.7915 3.08473 16.9298 2.03125 14.8657 1.27848C14.803 1.25624 14.7383 1.28903 14.7121 1.35248C14.5028 1.8833 14.3413 2.54446 14.2259 3.22854C12.3394 3.03487 10.4243 3.03487 8.53786 3.22854C8.42249 2.54446 8.261 1.8833 8.05168 1.35248C8.02549 1.28903 7.96075 1.25624 7.89809 1.27848C5.83401 2.03125 3.97233 3.08473 2.44682 4.36981C2.44682 4.36981 -0.219453 9.7332 0.0274719 15.143C1.58332 16.8841 3.53856 17.9353 5.56822 18.526C5.63088 18.5482 5.70273 18.5154 5.73311 18.452C6.16233 17.6186 6.53676 16.7458 6.84542 15.8451C6.86766 15.7816 6.82921 15.7182 6.76447 15.696C6.18341 15.4952 5.63351 15.2533 5.12239 14.9569C5.06173 14.9205 5.04789 14.8361 5.08848 14.7816C5.1632 14.686 5.242 14.5945 5.32488 14.503C5.76409 13.9986 6.27521 13.5186 6.84342 13.067C7.0393 12.9149 7.28828 12.9619 7.42023 13.1428C9.53103 15.071 12.2194 15.9866 14.801 15.9866C17.3826 15.9866 20.071 15.071 22.1818 13.1428C22.3137 12.9619 22.5627 12.9149 22.7586 13.067C23.3268 13.5186 23.8379 13.9986 24.2771 14.503C24.3599 14.5945 24.4387 14.686 24.5135 14.7816C24.5541 14.8361 24.5402 14.9205 24.4796 14.9569C23.9685 15.2533 23.4186 15.4952 22.8375 15.696C22.7728 15.7182 22.7343 15.7816 22.7566 15.8451C23.0652 16.7458 23.4397 17.6186 23.8689 18.452C23.8993 18.5154 23.9711 18.5482 24.0338 18.526C26.0634 17.9353 28.0187 16.8841 29.5745 15.143C29.8255 9.7332 27.1551 4.36981 27.1551 4.36981C25.6296 3.08473 23.7679 2.03125 21.7038 1.27848C21.6412 1.25624 21.5764 1.28903 21.5502 1.35248C21.3409 1.8833 21.1794 2.54446 21.0641 3.22854C19.1776 3.03487 17.2625 3.03487 15.376 3.22854C15.2606 2.54446 15.0991 1.8833 14.8898 1.35248C14.8636 1.28903 14.7989 1.25624 14.7362 1.27848C14.7362 1.27848 14.801 1.2744 14.8657 1.27848ZM10.4707 12.1121C9.25586 12.1121 8.24316 11.0223 8.24316 9.71261C8.24316 8.40292 9.25586 7.31312 10.4707 7.31312C11.6855 7.31312 12.6982 8.40292 12.6744 9.71261C12.6744 11.0223 11.6855 12.1121 10.4707 12.1121ZM19.1332 12.1121C17.9184 12.1121 16.9057 11.0223 16.9057 9.71261C16.9057 8.40292 17.9184 7.31312 19.1332 7.31312C20.348 7.31312 21.3607 8.40292 21.3369 9.71261C21.3369 11.0223 20.348 12.1121 19.1332 12.1121Z"/>
+          </svg>
+          <h3 class="community-card__title">Join the Discord</h3>
+          <p class="community-card__description">Chat with the dev, share your ideas, and be the first to know about
+            updates. Your feedback shapes the game!</p>
+          <a href="https://discord.com/channels/1392164113177907231/1392164114683527170" class="community-card__link"
+             target="_blank" rel="noopener noreferrer">Let's Chat</a>
+        </div>
+
+        <!-- itch.io Card -->
+        <div class="community-card">
+          <svg class="community-card__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21.99 8.24c0-1.24-1-2.24-2.24-2.24H18V4.5c0-.83-.67-1.5-1.5-1.5S15 3.67 15 4.5V6H9V4.5c0-.83-.67-1.5-1.5-1.5S6 3.67 6 4.5V6H4.24C3 6 2 7 2 8.24v2.78c0 .28.16.53.41.66l8.83 4.42c.24.12.52.12.76 0l8.83-4.42c.25-.13.41-.38.41-.66V8.24zM12 14.53L4 10.42v6.34c0 1.24 1 2.24 2.24 2.24h11.52c1.24 0 2.24-1 2.24-2.24v-6.34l-8 4.11z"/>
+          </svg>
+          <h3 class="community-card__title">Play on itch.io</h3>
+          <p class="community-card__description">Download the latest build and try the game for yourself. Currently
+            available for Windows & Mac.</p>
+          <a href="https://turtaru.itch.io/sweeps" class="community-card__link" target="_blank"
+             rel="noopener noreferrer">Download Now</a>
+        </div>
+
+        <!-- Feedback Card -->
+        <div class="community-card">
+          <svg class="community-card__icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+          </svg>
+          <h3 class="community-card__title">Give Feedback</h3>
+          <!-- UPDATE BUILD VERSION HERE -->
+          <p class="community-card__description">Played build v0.1.2? Tell us what you think! Your detailed feedback
+            helps us fix bugs and improve the experience.</p>
+          <a href="https://www.notion.so/20a0accd411d806bb4c7eba2a8d081fc?pvs=21" class="community-card__link"
+             target="_blank" rel="noopener noreferrer">Submit Feedback</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Development Updates -->
+  <section class="updates">
+    <div class="container">
+      <h2 class="updates__title">Development Log</h2>
+      <div class="updates__log">
+        <!-- UPDATE THIS SECTION WITH EACH NEW BUILD -->
+        <h3 class="updates__version">Latest Changes: Build v0.1.2</h3>
+        <ul class="updates__list">
+          <li>Improved sweeper turning radius for a smoother ride.</li>
+          <li>Fixed a bug where dirt would sometimes reappear after cleaning.</li>
+          <li>Added a new pine tree model to Island #2.</li>
+          <li>Optimized water shader for better performance.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Section 5: Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__links">
+      <a href="https://discord.com/channels/1392164113177907231/1392164114683527170" class="footer__link"
+         target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://turtaru.itch.io/sweeps" class="footer__link" target="_blank"
+         rel="noopener noreferrer">itch.io</a>
+    </div>
+    <!-- UPDATE YOUR NAME/STUDIO NAME HERE -->
+    <p class="footer__copyright">© 2024 Island Sweeper by turtaru. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
