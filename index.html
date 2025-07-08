@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Island Sweeper - A Cozy Cleaning Adventure</title>
 
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
   <!-- Google Fonts: Nunito (friendly, rounded sans-serif) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ------------------- */
-    /* --- CSS Reset & Globals --- */
-    /* ------------------- */
     :root {
-      --color-bg: #F0F8FF; /* AliceBlue - soft, sky-like */
+      --color-bg: #F0F8FF; /* AliceBlue - soft, clean, sky-like background */
       --color-text: #334155; /* Slate 700 - dark, but not black */
-      --color-primary: #60A5FA; /* Blue 400 - friendly and inviting */
-      --color-primary-dark: #3B82F6; /* Blue 500 - for hover */
-      --color-secondary: #FDE68A; /* Amber 200 - sunny yellow */
+      --color-primary: #64d6b6; /* Blue 400 - friendly and inviting */
+      --color-primary-dark: #60eec3; /* Blue 500 - for hover */
       --color-white: #FFFFFF;
       --color-border: #E0E7FF; /* Indigo 100 - soft border */
 
@@ -51,7 +51,7 @@
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
     }
 
     h2 {
@@ -75,31 +75,24 @@
       padding-right: 1rem;
     }
 
-    /* ------------------- */
-    /* --- BEM Components --- */
-    /* ------------------- */
-
-    /* --- Hero Section --- */
     .hero {
       padding: var(--section-padding);
       text-align: center;
-      background-color: var(--color-secondary);
-      background-image: linear-gradient(180deg, rgba(253, 230, 138, 0.8) 0%, rgba(240, 248, 255, 1) 100%);
     }
 
     .hero__headline {
       color: var(--color-text);
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .hero__sub-headline {
       font-size: 1.25rem;
-      max-width: 600px;
-      margin: 0 auto 2rem auto;
+      max-width: 400px;
+      margin: 0 auto 2.5rem auto;
     }
 
     .hero__image-wrapper {
-      max-width: 800px;
+      max-width: 600px;
       margin: 3rem auto;
       border-radius: 12px;
       overflow: hidden;
@@ -121,6 +114,7 @@
       font-weight: 700;
       font-size: 1.1rem;
       transition: transform 0.2s ease, background-color 0.2s ease;
+      border: 2px solid transparent;
     }
 
     .hero__button:hover {
@@ -143,10 +137,9 @@
     }
 
     .hero__button--secondary:hover {
-      background-color: #F9FAFB; /* Gray 50 */
+      background-color: #F9FAFB;
     }
 
-    /* --- About Section --- */
     .about {
       padding: var(--section-padding);
       background-color: var(--color-white);
@@ -173,7 +166,6 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     }
 
-    /* --- Community Section --- */
     .community {
       padding: var(--section-padding);
     }
@@ -235,7 +227,6 @@
       background-color: var(--color-primary-dark);
     }
 
-    /* --- Updates Section --- */
     .updates {
       padding: var(--section-padding);
       background-color: var(--color-white);
@@ -249,7 +240,7 @@
     .updates__log {
       max-width: 600px;
       margin: 0 auto;
-      background-color: #F9FAFB; /* Gray 50 */
+      background-color: #F9FAFB;
       border: 1px solid var(--color-border);
       border-radius: 8px;
       padding: 2rem;
@@ -263,7 +254,7 @@
     }
 
     .updates__list {
-      list-style-type: '🧹'; /* Fun little emoji bullet */
+      list-style-type: '🧹';
       padding-left: 2rem;
     }
 
@@ -272,7 +263,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* --- Footer Section --- */
     .footer {
       padding: 3rem 1rem;
       text-align: center;
@@ -295,15 +285,12 @@
 
     .footer__copyright {
       font-size: 0.9rem;
-      color: #64748B; /* Slate 500 */
+      color: #64748B;
     }
 
-    /* ------------------- */
-    /* --- Responsive Media Queries --- */
-    /* ------------------- */
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
       }
 
       h2 {
@@ -327,9 +314,8 @@
 <!-- Section 1: Hero -->
 <header class="hero">
   <div class="container">
-    <h1 class="hero__headline">Cozy Cleaning on Sunny Shores</h1>
+    <h1 class="hero__headline">Island Sweeper</h1>
     <p class="hero__sub-headline">A relaxing, low-poly adventure about making islands sparkle, one street at a time.</p>
-
     <div class="hero__cta-group">
       <a href="https://discord.com/channels/1392164113177907231/1392164114683527170"
          class="hero__button hero__button--primary" target="_blank" rel="noopener noreferrer">Join our Discord</a>
@@ -338,13 +324,7 @@
     </div>
 
     <div class="hero__image-wrapper">
-      <!--
-          REPLACE THIS IMAGE:
-          This is your primary hero screenshot.
-          Recommended size: 1600x900px
-      -->
-      <img src="https://placehold.co/1600x900/A8D8B9/334155?text=Your+Beautiful\nGame+Screenshot"
-           alt="A colorful, low-poly island with a street sweeper vehicle.">
+      <img src="/pictures/sceneshot.png" alt="A colorful, low-poly island with a street sweeper vehicle.">
     </div>
   </div>
 </header>
@@ -357,7 +337,7 @@
         <h2 class="about__title">The Simple Joy of a Clean Sweep</h2>
         <p>
           Welcome to Island Sweeper! This is a game about the simple, satisfying joy of cleaning. Hop into your trusty
-          sweeper vehicle and explore charming, low-poly islands at your own pace. There are no timers, no enemies, and
+          sweeper and explore charming, low-poly islands at your own pace. There are no timers, no enemies, and
           no stress—just you, your sweeper, and a world waiting to sparkle.
         </p>
         <p>
@@ -366,12 +346,7 @@
         </p>
       </div>
       <div class="about__image-wrapper">
-        <!--
-            REPLACE THIS IMAGE:
-            A good place for a "before/after" or alternate environment shot.
-            Recommended size: 1200x800px
-        -->
-        <img src="https://placehold.co/1200x800/FDE68A/334155?text=Another+Great\nScreenshot+Here"
+        <img src="/pictures/cleaning_green_ui.png"
              alt="A street sweeper cleaning a path on a different island.">
       </div>
     </div>
@@ -452,7 +427,7 @@
          rel="noopener noreferrer">itch.io</a>
     </div>
     <!-- UPDATE YOUR NAME/STUDIO NAME HERE -->
-    <p class="footer__copyright">© 2024 Island Sweeper by turtaru. All rights reserved.</p>
+    <p class="footer__copyright">© 2025 Island Sweeper by Turtaru. All rights reserved.</p>
   </div>
 </footer>
 
