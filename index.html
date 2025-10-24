@@ -196,6 +196,8 @@
     }
 
     .community-card {
+      display: flex;
+      flex-flow: column;
       background-color: var(--color-white);
       border: 1px solid var(--color-border);
       border-radius: 12px;
@@ -234,6 +236,7 @@
       text-decoration: none;
       border-radius: 50px;
       font-weight: 700;
+      margin-top: auto;
       transition: background-color 0.2s ease;
     }
 
@@ -453,7 +456,7 @@
     <div class="container">
       <h2 class="updates__title">Development Log</h2>
       <div class="updates__log">
-        <h3 class="updates__version">Initial Build: 0001-11.07.2025</h3>
+        <h3 class="updates__version">Initial Build: 0001-24.10.2025</h3>
         <ul class="updates__list">
           <li>Implemented the core sweeper control system for third-person driving.</li>
           <li>Added a basic dirt cleanup system to tidy up the islands.</li>
