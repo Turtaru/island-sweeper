@@ -261,6 +261,11 @@
       border: 1px solid var(--color-border);
       border-radius: 8px;
       padding: 2rem;
+      margin-bottom:  2rem;
+
+      :last-child {
+        margin-bottom: 0;
+      }
     }
 
     .updates__version {
@@ -334,7 +339,7 @@
     <h1 class="hero__headline">Island Sweeper</h1>
     <p class="hero__sub-headline">A relaxing, low-poly adventure about making islands sparkle, one street at a time.</p>
     <div class="hero__cta-group">
-      <a href="https://discord.gg/XFnC3UAB"
+      <a href="https://discord.gg/tkPcezByWm"
          class="hero__button hero__button--primary" target="_blank" rel="noopener noreferrer">
         <svg class="hero__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -411,7 +416,7 @@
           <h3 class="community-card__title">Join the Discord</h3>
           <p class="community-card__description">Chat with the dev, share your ideas, and be the first to know about
             updates. Your feedback shapes the game!</p>
-          <a href="https://discord.gg/XFnC3UAB" class="community-card__link"
+          <a href="https://discord.gg/tkPcezByWm" class="community-card__link"
              target="_blank" rel="noopener noreferrer">Let's Chat</a>
         </div>
 
@@ -442,7 +447,7 @@
           </svg>
           <h3 class="community-card__title">Give Feedback</h3>
           <!-- UPDATE BUILD VERSION HERE -->
-          <p class="community-card__description">Played build v0.1.2? Tell us what you think! Your detailed feedback
+          <p class="community-card__description">Tell us what you think! Your detailed feedback
             helps us fix bugs and improve the experience.</p>
           <a href="https://www.notion.so/20a0accd411d806bb4c7eba2a8d081fc?pvs=21" class="community-card__link"
              target="_blank" rel="noopener noreferrer">Submit Feedback</a>
@@ -451,10 +456,24 @@
     </div>
   </section>
 
+
   <!-- Section 4: Development Updates -->
   <section class="updates">
     <div class="container">
       <h2 class="updates__title">Development Log</h2>
+      <div class="updates__log">
+        <h3 class="updates__version">First mini game loop: 0003-25.05.2026</h3>
+        <ul class="updates__list">
+          <li>Add dirt "life" system, dirt nodes don't disappear instantly anyore.</li>
+          <li>Fixed typo in "Game Progress" Label</li>
+          <li>Replaced Discord link with permanent link.</li>
+          <li>Moved dirt pickup system to area instead of indivdual points.</li>
+          <li>Added Portals for level transition</li>
+          <li>Adapt unload system to charge portals</li>
+          <li>Added Save game</li>
+          <li>Add simple level setup, start > island > thank you</li>
+        </ul>
+      </div>
       <div class="updates__log">
         <h3 class="updates__version">Initial Build: 0001-24.10.2025</h3>
         <ul class="updates__list">
@@ -473,13 +492,13 @@
 <footer class="footer">
   <div class="container">
     <div class="footer__links">
-      <a href="https://discord.gg/XFnC3UAB" class="footer__link"
+      <a href="https://discord.gg/tkPcezByWm" class="footer__link"
          target="_blank" rel="noopener noreferrer">Discord</a>
       <a href="https://turtaru.itch.io/sweeps" class="footer__link" target="_blank"
          rel="noopener noreferrer">itch.io</a>
     </div>
     <!-- UPDATE YOUR NAME/STUDIO NAME HERE -->
-    <p class="footer__copyright">© 2025 Island Sweeper by Turtaru. All rights reserved.</p>
+    <p class="footer__copyright">© 2026 Island Sweeper by Turtaru. All rights reserved.</p>
   </div>
 </footer>
 
